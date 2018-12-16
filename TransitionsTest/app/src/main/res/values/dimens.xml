@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_size">70dp</dimen>
+    <dimen name="horiz_margin">16dp</dimen>
+    <dimen name="vertical_margin">16dp</dimen>
+</resources>
