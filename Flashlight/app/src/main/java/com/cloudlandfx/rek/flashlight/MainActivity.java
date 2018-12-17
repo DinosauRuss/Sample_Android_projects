@@ -1,23 +1,20 @@
 package com.cloudlandfx.rek.flashlight;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.pm.PackageManager;
-import android.hardware.camera2.CameraAccessException;
-import android.hardware.camera2.CameraManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
+    // For Log.d
+    private final String TAG = "MainActivity_tag";
+
     private ImageButton mDroidButton;
-    private CameraManager mCameraManager;
-    private  String mCameraId;
-    private boolean isTorchOn;
     private final String TORCH_STATE = "torch_state";
+
+    private Controller mController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +22,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mDroidButton = findViewById(R.id.ivDroidButton);
-        isTorchOn = false;
-
-        mCameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-        checkForCamera();
-        checkForTorch();
+        mController = new Controller(this);
 
         if ( savedInstanceState != null ) {
-            isTorchOn = savedInstanceState.getBoolean(TORCH_STATE);
+            mController.torchState = savedInstanceState.getBoolean(TORCH_STATE);
         }
     }
 
@@ -40,66 +33,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putBoolean(TORCH_STATE, isTorchOn);
+        outState.putBoolean(TORCH_STATE, mController.torchState);
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        if ( isTorchOn ) {
-            turnTorchOff();
-        }
-    }
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if ( isTorchOn ) {
-            turnTorchOff();
-        }
-    }
-
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        if ( isTorchOn ) {
-            turnTorchOff();
-        }
-    }
-
-    /**
-     * Check if device has a camera flash
-     * @return
-     */
-    private boolean flashAvailable() {
-        return getPackageManager().hasSystemFeature( PackageManager.FEATURE_CAMERA_FLASH );
-    }
-
-    /**
-     * Check if device has an accessable camera
-     */
-    private void checkForCamera() {
-        try {
-            mCameraId = mCameraManager.getCameraIdList()[0];
-        } catch (CameraAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Alert if torch not available
-     */
-    private void checkForTorch() {
-        if ( !flashAvailable() ) {
-            AlertDialog alerto = new AlertDialog.Builder(this)
-                    .setTitle("Alert!")
-                    .setMessage("Flashlight Not Avaliable")
-                    .setPositiveButton("Bummer", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    })
-                    .show();
+        if ( savedInstanceState != null ) {
+            mController.torchState = savedInstanceState.getBoolean(TORCH_STATE);
         }
     }
 
@@ -108,37 +50,27 @@ public class MainActivity extends AppCompatActivity {
      * @param view  Button which called this function
      */
     public void toggleFlashlight(View view) {
-        if (isTorchOn) {
-            turnTorchOff();
+        if (mController.torchState) {
+            torchOffWithImage();
         } else {
-            turnTorchOn();
+            torchOnWithImage();
         }
     }
 
     /**
-     * Turn the camera torch on and change button image
+     * Turn off torch and change button image to match
      */
-    private void turnTorchOn() {
-        try {
-            mCameraManager.setTorchMode(mCameraId, true);
-            mDroidButton.setImageResource(R.drawable.ic_android_orange_24dp);
-            isTorchOn = true;
-            } catch (CameraAccessException e) {
-            e.printStackTrace();
-        }
+    private void torchOffWithImage() {
+        mController.turnTorchOff();
+        mDroidButton.setImageResource(R.drawable.ic_android_black_24dp);
     }
 
     /**
-     * Turn the camera torch off and change button image
+     * Turn on torch and change button image to match
      */
-    private void turnTorchOff() {
-        try {
-            mCameraManager.setTorchMode(mCameraId, false);
-            mDroidButton.setImageResource(R.drawable.ic_android_black_24dp);
-            isTorchOn = false;
-        } catch (CameraAccessException e) {
-            e.printStackTrace();
-        }
+    private void torchOnWithImage() {
+        mController.turnTorchOn();
+        mDroidButton.setImageResource(R.drawable.ic_android_orange_24dp);
     }
 
 }
