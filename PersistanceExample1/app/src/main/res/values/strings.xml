@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">PersistanceExample1</string>
+    <string name="action_settings">Settings</string>
+    <string name="new_note_hint">Enter New Note</string>
+    <string name="btn_save">Save</string>
+    <string name="toast_note_saved">Note Saved</string>
+    <string name="toast_note_cancelled">Note Cancelled</string>
+    <string name="edt_revised_note">Enter Revised Note</string>
+    <string name="btn_update">Update</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="toast_note_updated">Note Updated</string>
+</resources>
