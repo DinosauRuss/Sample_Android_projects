@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -26,11 +27,20 @@ public class WelcomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_welcome, container, false);
 
-        SharedViewModel sharedViewModel = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
-        String name = sharedViewModel.getName();
+        CharacterViewModel cvm = ViewModelProviders.of(getActivity()).get(CharacterViewModel.class);
+        String name = cvm.getName();
         String welcomeText = "Welcome " + name + "!";
         TextView tv = v.findViewById(R.id.tvWelcome);
         tv.setText(welcomeText);
+
+        // Return to RecyclerView fragment
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().getSupportFragmentManager()
+                        .popBackStack();
+            }
+        });
 
         return v;
     }

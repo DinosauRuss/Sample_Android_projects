@@ -9,12 +9,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    private ArrayList<String> mData = new ArrayList<>();
+    public static String welcomeTag = "welcome";
+
+    private List<Character> mData;
     LayoutInflater inflato;
     ImageClickListener mImageListener;
 
@@ -28,7 +30,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public RecyclerAdapter(Context context) {
         inflato = LayoutInflater.from(context);
         mImageListener = (ImageClickListener) context;
-        setData();
     }
 
     @NonNull
@@ -45,37 +46,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        if (mData != null) {
+            return mData.size();
+        } else {
+            return 0;
+        }
     }
 
-    /**
-     * Sets sample data for RecyclerView
-     */
-    private void setData() {
-        mData.add("Grimace");
-        mData.add("Dinger");
-        mData.add("Kermit");
-        mData.add("Fozzie");
-        mData.add("Piggy");
-        mData.add("Gonzo");
-        mData.add("Penelope");
-        mData.add("Scooter");
-        mData.add("Rowlf");
-        mData.add("Rizzo");
-        mData.add("Beauregard");
-        mData.add("Billy Bob");
-        mData.add("Camila");
-        mData.add("Petunia");
-        mData.add("Ratso");
-        mData.add("Beaker");
-        mData.add("Bunsen");
-        mData.add("Waldorf");
-        mData.add("Bobo");
-        mData.add("Sam");
-        mData.add("Constantine");
+    public void setData(List<Character> allData) {
+        mData = allData;
+        notifyDataSetChanged();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         private String mName;
         private TextView mTvName;
         private TextView mTvNumber;
@@ -84,9 +67,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             super(itemView);
 
             mTvName = itemView.findViewById(R.id.tvName);
-            mTvNumber = itemView.findViewById(R.id.tvNumber);
-            ImageView mImageView = itemView.findViewById(R.id.imgAddCircle);
-            mImageView.setOnClickListener(new View.OnClickListener() {
+            mTvNumber = itemView.findViewById(R.id.tvColor);
+
+            ImageView mIvWelcome = itemView.findViewById(R.id.imgWelcome);
+            mIvWelcome.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     listener.respondImageclick(mName);
@@ -95,9 +79,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
 
         public void fillViews(int position) {
-            mName = mData.get(position);
-            mTvName.setText(mName);
-            mTvNumber.setText(String.valueOf(position));
+            if (mData != null) {
+                Character c = mData.get(position);
+                mName = c.getName();
+                mTvName.setText(mName);
+                mTvNumber.setText(c.getColor());
+            }
         }
     }
 
