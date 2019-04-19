@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    style="@style/AppTheme.Dark.Dialog">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pgb"
+        android:layout_alignParentStart="true"
+        android:indeterminateTint="@color/colorAccent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saving..."
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:textSize="24sp"
+        android:textColor="@color/colorAccent"/>
+
+</RelativeLayout>

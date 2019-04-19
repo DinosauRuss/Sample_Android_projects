@@ -1,5 +1,6 @@
 package com.example.rek.fragmentrecyclerview;
 
+
 import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.AsyncTask;
@@ -16,13 +17,16 @@ import android.widget.Toast;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddCharacterFragment extends Fragment {
+public class EditCharacterFragment extends Fragment {
 
-    CharacterViewModel characterViewModel;
-    EditText edtName;
-    EditText edtColor;
+    private CharacterViewModel mCharacterViewModel;
+    private Character mCharacter;
+    private EditText mEdtName;
+    private EditText mEdtColor;
+    private String mStartName;
+    private String mStartColor;
 
-    public AddCharacterFragment() {
+    public EditCharacterFragment() {
         // Required empty public constructor
     }
 
@@ -30,14 +34,27 @@ public class AddCharacterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_add_character, container, false);
+        View v = inflater.inflate(R.layout.fragment_edit_character, container, false);
 
-        characterViewModel = ViewModelProviders.of(getActivity()).get(CharacterViewModel.class);
+        mCharacterViewModel = ViewModelProviders.of(getActivity()).get(CharacterViewModel.class);
+        mCharacter = mCharacterViewModel.getCharacter();
 
-        edtName = v.findViewById(R.id.edtNewName);
-        edtColor = v.findViewById(R.id.edtNewColor);
+        mEdtName = v.findViewById(R.id.edtEditName);
+        mStartName = mCharacter.getName();
+        mEdtName.setText(mStartName);
+        mEdtColor = v.findViewById(R.id.edtEditColor);
+        mStartColor = mCharacter.getColor();
+        mEdtColor.setText(mStartColor);
 
-        Button btnCancel = v.findViewById(R.id.btnAddCancel);
+        Button btnSave = v.findViewById(R.id.btnEditSave);
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buttonSave();
+            }
+        });
+
+        Button btnCancel = v.findViewById(R.id.btnEditCancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,36 +62,30 @@ public class AddCharacterFragment extends Fragment {
             }
         });
 
-        Button btnSave = v.findViewById(R.id.btnAddSave);
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonSave();
-            }
-        });
         return v;
     }
 
     private void buttonSave() {
-        String name = edtName.getText().toString();
-        String color = edtColor.getText().toString();
-        if ( name.trim().length() > 0  &&  color.trim().length()> 0 ) {
-            // Add new character to room db
-            Character c = new Character(name, color);
-            characterViewModel.insertCharacter(c);
+        String currentName = mEdtName.getText().toString();
+        String currentColor = mEdtColor.getText().toString();
 
-            // Show 'saving dialog'
-            new saveAsyncTask(2000).execute();
+        // If at least 1 field has changed and are both not empty
+        if ( (!mStartName.equals(currentName)) || (!mStartColor.equals(currentColor)) ) {
+            if (currentName.trim().length() > 0 && currentColor.trim().length() > 0) {
+                mCharacter.setName(currentName);
+                mCharacter.setColor(currentColor);
+                mCharacterViewModel.updateCharacter(mCharacter);
 
-            // Return to recycler fragment
-            getActivity().getSupportFragmentManager().popBackStack();
+                new saveAsyncTask(2000).execute();
+                getActivity().getSupportFragmentManager().popBackStack();
+            }
         } else {
             buttonCancel();
         }
     }
 
     private void buttonCancel() {
-        Toast.makeText(getActivity(), "Character not added", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Character Not Changed", Toast.LENGTH_SHORT).show();
         getActivity().getSupportFragmentManager().popBackStack();
     }
 

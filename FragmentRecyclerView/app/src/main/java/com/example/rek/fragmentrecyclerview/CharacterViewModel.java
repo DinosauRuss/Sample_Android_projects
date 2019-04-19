@@ -9,16 +9,16 @@ import java.util.List;
 
 public class CharacterViewModel extends AndroidViewModel {
 
-    private String mName;
-    private LiveData<List<Character>> mData;
+    private Character mCharacter;
     private CharacterRepository mRepo;
 
     public CharacterViewModel(@NonNull Application application) {
         super(application);
         mRepo = new CharacterRepository(application);
-        mData = mRepo.getAllCharacters();
     }
 
+
+    // Functions to access Room Database
     public void insertCharacter(Character character) {
         mRepo.insertCharacter(character);
     }
@@ -32,15 +32,17 @@ public class CharacterViewModel extends AndroidViewModel {
     }
 
     public LiveData<List<Character>> getAllCharacters() {
-        return mData;
+        return mRepo.getAllCharacters();
     }
 
-    public void setName(String name) {
-        this.mName = name;
+
+
+    // Functions for fragment to fragment communication
+    public void setCharacter(Character c) {
+        this.mCharacter = c;
     }
 
-    public String getName() {
-        return mName;
+    public Character getCharacter() {
+        return mCharacter;
     }
-
 }

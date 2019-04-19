@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_bright"
+    android:background="@android:color/black"
     android:fitsSystemWindows="true"
     android:padding="30dp">
 
@@ -17,29 +17,29 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
-            android:text="Add Character"
-            android:textColor="#081C92"
+            android:text="Edit Character"
+            android:textColor="#F19715"
             android:textSize="40sp" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_person_purple_large" />
+            android:src="@drawable/ic_person_brown_large" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/edtNewName"
+                android:id="@+id/edtEditName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:backgroundTint="#591675"
+                android:backgroundTint="@android:color/white"
                 android:hint="@string/hint_enter_name"
-                android:textColor="#591675"
-                android:textColorHint="@android:color/holo_purple" />
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/darker_gray" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -47,19 +47,19 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/edtNewColor"
+                android:id="@+id/edtEditColor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:backgroundTint="#591675"
+                android:backgroundTint="@android:color/white"
                 android:hint="@string/hint_character_color"
-                android:textColor="#591675"
-                android:textColorHint="@android:color/holo_purple" />
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
-            android:id="@+id/btnAddSave"
-            style="@style/button_blue"
+            android:id="@+id/btnEditSave"
+            style="@style/button_orange"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -67,8 +67,8 @@
             android:text="@string/btn_save" />
 
         <Button
-            android:id="@+id/btnAddCancel"
-            style="@style/button_blue"
+            android:id="@+id/btnEditCancel"
+            style="@style/button_orange"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

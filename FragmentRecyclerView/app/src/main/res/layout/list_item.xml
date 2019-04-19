@@ -3,15 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="100dp"
     android:layout_margin="10dp"
     android:backgroundTint="#FAF5CC"
-    app:cardCornerRadius="15dp"
-    app:cardElevation="8dp">
+    app:cardCornerRadius="10dp"
+    app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -23,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="24sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 tools:text="Some Name" />
 
@@ -31,18 +33,34 @@
                 android:id="@+id/tvColor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:layout_gravity="center_vertical"
+                android:layout_margin="8dp"
+                android:textSize="18sp"
                 tools:text="5" />
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imgWelcome"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:src="@drawable/ic_happy_emoticon" />
+            android:orientation="vertical"
+            android:layout_marginEnd="8dp">
+
+            <ImageView
+                android:id="@+id/imgWelcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_happy_emoticon"
+                android:layout_margin="4dp"/>
+
+            <ImageView
+                android:id="@+id/imgEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

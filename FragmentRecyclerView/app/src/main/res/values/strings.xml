@@ -2,10 +2,11 @@
     <string name="app_name">FragmentRecyclerView</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="hint_enter_name">What is the character\'s name?</string>
-    <string name="hint_character_color">What color is the character?</string>
+    <string name="hint_enter_name">Name</string>
+    <string name="hint_character_color">Color</string>
     <string name="btn_cancel">Cancel</string>
     <string name="btn_save">Save</string>
-    <string name="title_activity_main2">Main2Activity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

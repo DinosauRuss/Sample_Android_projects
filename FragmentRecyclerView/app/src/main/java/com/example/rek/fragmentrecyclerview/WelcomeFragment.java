@@ -28,7 +28,7 @@ public class WelcomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_welcome, container, false);
 
         CharacterViewModel cvm = ViewModelProviders.of(getActivity()).get(CharacterViewModel.class);
-        String name = cvm.getName();
+        String name = cvm.getCharacter().getName();
         String welcomeText = "Welcome " + name + "!";
         TextView tv = v.findViewById(R.id.tvWelcome);
         tv.setText(welcomeText);
