@@ -6,7 +6,10 @@
     <string name="hint_character_color">Color</string>
     <string name="btn_cancel">Cancel</string>
     <string name="btn_save">Save</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="character_not_added">Character not added</string>
+    <string name="character_not_changed">Character Not Changed</string>
+    <string name="welcome">"Welcome "</string>
+    <string name="character_deleted">Character Deleted</string>
+    <string name="title_characters">Characters</string>
 </resources>

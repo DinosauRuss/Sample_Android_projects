@@ -4,7 +4,6 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
-
 import java.util.List;
 
 public class CharacterViewModel extends AndroidViewModel {
@@ -34,7 +33,6 @@ public class CharacterViewModel extends AndroidViewModel {
     public LiveData<List<Character>> getAllCharacters() {
         return mRepo.getAllCharacters();
     }
-
 
 
     // Functions for fragment to fragment communication

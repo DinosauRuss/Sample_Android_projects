@@ -1,6 +1,5 @@
 package com.example.rek.fragmentrecyclerview;
 
-
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,9 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class WelcomeFragment extends Fragment {
 
     public WelcomeFragment() {
@@ -29,7 +25,7 @@ public class WelcomeFragment extends Fragment {
 
         CharacterViewModel cvm = ViewModelProviders.of(getActivity()).get(CharacterViewModel.class);
         String name = cvm.getCharacter().getName();
-        String welcomeText = "Welcome " + name + "!";
+        String welcomeText = getString(R.string.welcome) + name + "!";
         TextView tv = v.findViewById(R.id.tvWelcome);
         tv.setText(welcomeText);
 

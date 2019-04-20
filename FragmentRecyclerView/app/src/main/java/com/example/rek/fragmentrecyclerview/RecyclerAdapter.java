@@ -58,6 +58,7 @@ public class RecyclerAdapter extends ListAdapter<Character, RecyclerAdapter.View
         return getItem(position);
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         private Character mCharacter;
         private TextView mTvName;

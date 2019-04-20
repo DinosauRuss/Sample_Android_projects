@@ -82,7 +82,7 @@ public class EditCharacterFragment extends Fragment {
     }
 
     private void buttonCancel() {
-        Toast.makeText(getActivity(), "Character Not Changed", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), getString(R.string.character_not_changed), Toast.LENGTH_SHORT).show();
         getActivity().getSupportFragmentManager().popBackStack();
     }
 

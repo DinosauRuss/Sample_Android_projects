@@ -71,7 +71,7 @@ public class AddCharacterFragment extends Fragment {
     }
 
     private void buttonCancel() {
-        Toast.makeText(getActivity(), "Character not added", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), getString(R.string.character_not_added), Toast.LENGTH_SHORT).show();
         getActivity().getSupportFragmentManager().popBackStack();
     }
 

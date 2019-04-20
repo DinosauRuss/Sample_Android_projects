@@ -3,8 +3,8 @@ package com.example.rek.fragmentrecyclerview;
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
-
 import java.util.List;
+
 
 public class CharacterRepository {
 
@@ -32,10 +32,6 @@ public class CharacterRepository {
     public LiveData<List<Character>> getAllCharacters() {
         return mData;
     }
-
-//    public LiveData<Character> getCharacterById(int id) {
-//        return mDao.getCharacterById(id);
-//    }
 
 
     private static class InsertCharacterAsyncTask extends AsyncTask<Character, Void, Void> {

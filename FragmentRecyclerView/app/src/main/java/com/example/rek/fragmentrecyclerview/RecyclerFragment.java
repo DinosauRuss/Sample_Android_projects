@@ -50,7 +50,7 @@ public class RecyclerFragment extends Fragment implements RecyclerAdapter.ImageC
         });
 
         Toolbar toolbar = view.findViewById(R.id.toolbar);
-        toolbar.setTitle("Some Title");
+        toolbar.setTitle(R.string.title_characters);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 
         return view;
@@ -110,7 +110,7 @@ public class RecyclerFragment extends Fragment implements RecyclerAdapter.ImageC
                 Character c = adapto.getCharacterAtPosition(position);
                 mCharacterViewModel.deleteCharacter(c);
 
-                Toast.makeText(getActivity(), "Character Deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getString(R.string.character_deleted), Toast.LENGTH_SHORT).show();
             }
         };
         ItemTouchHelper helpo = new ItemTouchHelper(touchCallback);

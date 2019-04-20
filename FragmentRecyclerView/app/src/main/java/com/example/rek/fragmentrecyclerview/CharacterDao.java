@@ -6,8 +6,6 @@ import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
-import android.widget.LinearLayout;
-
 import java.util.List;
 
 
@@ -25,8 +23,5 @@ public interface CharacterDao {
 
     @Query("SELECT * FROM character_table")
     LiveData<List<Character>> getAllCharacters();
-
-//    @Query("SELECT * FROM character_table WHERE id=:id")
-//    public LiveData<Character> getCharacterById(int id);
 
 }

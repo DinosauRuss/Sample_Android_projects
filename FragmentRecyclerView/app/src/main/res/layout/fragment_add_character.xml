@@ -18,7 +18,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
             android:text="Add Character"
-            android:textColor="#081C92"
+            android:textColor="@color/primary_blue"
             android:textSize="40sp" />
 
         <ImageView
@@ -36,9 +36,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:backgroundTint="#591675"
+                android:backgroundTint="@color/purple"
                 android:hint="@string/hint_enter_name"
-                android:textColor="#591675"
+                android:textColor="@color/purple"
                 android:textColorHint="@android:color/holo_purple" />
         </android.support.design.widget.TextInputLayout>
 
@@ -51,10 +51,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:backgroundTint="#591675"
+                android:backgroundTint="@color/purple"
                 android:hint="@string/hint_character_color"
-                android:textColor="#591675"
+                android:textColor="@color/purple"
                 android:textColorHint="@android:color/holo_purple" />
+
         </android.support.design.widget.TextInputLayout>
 
         <Button
