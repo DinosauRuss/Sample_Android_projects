@@ -33,10 +33,9 @@ public class CharacterRepository {
         return mData;
     }
 
-    public LiveData<Character> getCharacterById(int id) {
-//        Character c = new getCharacterAsyncTask(mDao).execute(id);
-        return mDao.getCharacterById(id);
-    }
+//    public LiveData<Character> getCharacterById(int id) {
+//        return mDao.getCharacterById(id);
+//    }
 
 
     private static class InsertCharacterAsyncTask extends AsyncTask<Character, Void, Void> {

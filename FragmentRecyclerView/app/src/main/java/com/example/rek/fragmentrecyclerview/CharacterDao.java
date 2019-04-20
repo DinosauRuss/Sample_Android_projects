@@ -26,7 +26,7 @@ public interface CharacterDao {
     @Query("SELECT * FROM character_table")
     LiveData<List<Character>> getAllCharacters();
 
-    @Query("SELECT * FROM character_table WHERE id=:id")
-    public LiveData<Character> getCharacterById(int id);
+//    @Query("SELECT * FROM character_table WHERE id=:id")
+//    public LiveData<Character> getCharacterById(int id);
 
 }

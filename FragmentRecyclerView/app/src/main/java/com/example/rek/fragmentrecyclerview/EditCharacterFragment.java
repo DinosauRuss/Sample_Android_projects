@@ -14,9 +14,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class EditCharacterFragment extends Fragment {
 
     private CharacterViewModel mCharacterViewModel;

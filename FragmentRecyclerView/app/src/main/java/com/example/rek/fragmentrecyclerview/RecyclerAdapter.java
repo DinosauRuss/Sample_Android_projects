@@ -17,13 +17,7 @@ public class RecyclerAdapter extends ListAdapter<Character, RecyclerAdapter.View
     private LayoutInflater inflato;
     private ImageClickListener mImageListener;
 
-    public RecyclerAdapter(Context context, ImageClickListener listener) {
-        super(DIFF_CALLBACK);
-        this.inflato = LayoutInflater.from(context);
-        this.mImageListener = listener;
-    }
-
-    public static DiffUtil.ItemCallback<Character> DIFF_CALLBACK = new DiffUtil.ItemCallback<Character>() {
+    private static DiffUtil.ItemCallback<Character> DIFF_CALLBACK = new DiffUtil.ItemCallback<Character>() {
         @Override
         public boolean areItemsTheSame(@NonNull Character oldCharacter, @NonNull Character newCharacter) {
             return oldCharacter.getId() == newCharacter.getId();
@@ -41,6 +35,13 @@ public class RecyclerAdapter extends ListAdapter<Character, RecyclerAdapter.View
         void respondEditImageclick(Character character);
     }
 
+
+    public RecyclerAdapter(Context context, ImageClickListener listener) {
+        super(DIFF_CALLBACK);
+        this.inflato = LayoutInflater.from(context);
+        this.mImageListener = listener;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -54,12 +55,11 @@ public class RecyclerAdapter extends ListAdapter<Character, RecyclerAdapter.View
     }
 
     public Character getCharacterAtPosition(int position) {
-//        return mData.get(position);
         return getItem(position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public Character mCharacter;
+        private Character mCharacter;
         private TextView mTvName;
         private TextView mTvColor;
 
