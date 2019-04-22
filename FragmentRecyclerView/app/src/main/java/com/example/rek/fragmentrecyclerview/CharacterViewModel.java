@@ -3,17 +3,22 @@ package com.example.rek.fragmentrecyclerview;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
+
+
 import java.util.List;
 
 public class CharacterViewModel extends AndroidViewModel {
 
-    private Character mCharacter;
+    private MutableLiveData<Character> mCharacter = new MutableLiveData<>();
     private CharacterRepository mRepo;
 
-    public CharacterViewModel(@NonNull Application application) {
+    public CharacterViewModel(@NonNull Application application, Character c) {
         super(application);
+
         mRepo = new CharacterRepository(application);
+        this.mCharacter.setValue(c);
     }
 
 
@@ -37,10 +42,10 @@ public class CharacterViewModel extends AndroidViewModel {
 
     // Functions for fragment to fragment communication
     public void setCharacter(Character c) {
-        this.mCharacter = c;
+        this.mCharacter.setValue(c);
     }
 
-    public Character getCharacter() {
+    public LiveData<Character> getCharacter() {
         return mCharacter;
     }
 }

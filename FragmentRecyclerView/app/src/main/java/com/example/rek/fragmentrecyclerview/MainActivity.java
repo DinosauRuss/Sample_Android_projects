@@ -1,5 +1,6 @@
 package com.example.rek.fragmentrecyclerview;
 
+import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -22,12 +23,19 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
 
-        mCharacterViewModel = ViewModelProviders.of(this).get(CharacterViewModel.class);
+//        mCharacterViewModel = ViewModelProviders.of(this).get(CharacterViewModel.class);
+        // Generic character to put into viewModel
+        Character charo = new Character("Nobody", "none");
+        CharacterViewModelFactory factory =
+                new CharacterViewModelFactory(getApplication(), charo);
+        mCharacterViewModel = ViewModelProviders.of(this, factory).get(CharacterViewModel.class);
+
         mFragmentManager = getSupportFragmentManager();
         portraitMode = getResources().getBoolean(R.bool.portraitMode);
 
+        setContentView(R.layout.activity_main);
         createFragments();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -55,8 +63,11 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * Create starting Fragments on configuration change
+     */
     private void createFragments() {
-        // Clear the backstack on configuration change
+        // Clear the backstack
         mFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         if (portraitMode) {
@@ -66,9 +77,14 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Wrapper function to add Fragment transactions
+     * @param fragment Fragment to add
+     * @param addToBackStack Choose to add Fragment to backstack
+     */
     private void transactFragment(Fragment fragment, boolean addToBackStack) {
         FragmentTransaction transacto = mFragmentManager.beginTransaction();
-        transacto.add(R.id.fragContainer, fragment);
+        transacto.replace(R.id.fragContainer, fragment);
         if (addToBackStack) {
             transacto.addToBackStack(null);
         }
@@ -83,7 +99,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void respondWelcomeImageclick(Character c) {
         mCharacterViewModel.setCharacter(c);
-        transactFragment(new WelcomeFragment(), true);
+        transactFragment(new WelcomeFragment(), portraitMode);
     }
 
     /**

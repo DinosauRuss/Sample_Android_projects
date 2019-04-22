@@ -9,10 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class WelcomeFragment extends Fragment {
+
+    private TextView tvName;
+    private Character mCharacter;
+    CharacterViewModel mCharacterViewModel;
 
     public WelcomeFragment() {
         // Required empty public constructor
@@ -23,20 +26,19 @@ public class WelcomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_welcome, container, false);
-        TextView tv = v.findViewById(R.id.tvWelcome);
+        tvName = v.findViewById(R.id.tvWelcome);
 
-        CharacterViewModel cvm = ViewModelProviders.of(getActivity()).get(CharacterViewModel.class);
-        Character c = cvm.getCharacter();
-
-        String welcomeText;
-        if (c == null) {
-            welcomeText = "Welcome nobody!";
-        } else {
-            String name = c.getName();
-            welcomeText = getString(R.string.welcome) + name + "!";
-        }
-        tv.setText(welcomeText);
-
+        mCharacterViewModel = ViewModelProviders.of(getActivity()).get(CharacterViewModel.class);
+        mCharacterViewModel.getCharacter().observe(this, new Observer<Character>() {
+            @Override
+            public void onChanged(@Nullable Character character) {
+                mCharacter = character;
+                String welcomeText;
+                String name = mCharacter.getName();
+                welcomeText = getString(R.string.welcome) + name + "!";
+                tvName.setText(welcomeText);
+            }
+        });
         return v;
     }
 

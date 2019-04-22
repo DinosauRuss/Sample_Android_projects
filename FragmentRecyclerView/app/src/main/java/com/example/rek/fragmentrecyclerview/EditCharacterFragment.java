@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,16 +35,22 @@ public class EditCharacterFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_edit_character, container, false);
+        mEdtName = v.findViewById(R.id.edtEditName);
+        mEdtColor = v.findViewById(R.id.edtEditColor);
 
         mCharacterViewModel = ViewModelProviders.of(getActivity()).get(CharacterViewModel.class);
-        mCharacter = mCharacterViewModel.getCharacter();
+//        mCharacter = mCharacterViewModel.getCharacter();
+        mCharacterViewModel.getCharacter().observe(this, new Observer<Character>() {
+            @Override
+            public void onChanged(@Nullable Character character) {
+                mCharacter = character;
 
-        mEdtName = v.findViewById(R.id.edtEditName);
-        mStartName = mCharacter.getName();
-        mEdtName.setText(mStartName);
-        mEdtColor = v.findViewById(R.id.edtEditColor);
-        mStartColor = mCharacter.getColor();
-        mEdtColor.setText(mStartColor);
+                mStartName = mCharacter.getName();
+                mEdtName.setText(mStartName);
+                mStartColor = mCharacter.getColor();
+                mEdtColor.setText(mStartColor);
+            }
+        });
 
         Button btnSave = v.findViewById(R.id.btnEditSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -110,13 +117,7 @@ public class EditCharacterFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... voids) {
             long start = System.currentTimeMillis();
-            while ( (System.currentTimeMillis()-start) < delayMillis) {
-                try {
-                    wait(delayMillis);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
+            while ( (System.currentTimeMillis()-start) < delayMillis) {}
             alertDialog.dismiss();
 
             return null;

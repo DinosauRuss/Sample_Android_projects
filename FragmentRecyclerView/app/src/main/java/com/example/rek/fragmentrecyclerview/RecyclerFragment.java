@@ -1,6 +1,5 @@
 package com.example.rek.fragmentrecyclerview;
 
-
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
