@@ -1,5 +1,6 @@
 package com.example.rek.fragmentrecyclerview;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,21 +23,19 @@ public class WelcomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_welcome, container, false);
+        TextView tv = v.findViewById(R.id.tvWelcome);
 
         CharacterViewModel cvm = ViewModelProviders.of(getActivity()).get(CharacterViewModel.class);
-        String name = cvm.getCharacter().getName();
-        String welcomeText = getString(R.string.welcome) + name + "!";
-        TextView tv = v.findViewById(R.id.tvWelcome);
-        tv.setText(welcomeText);
+        Character c = cvm.getCharacter();
 
-        // Return to RecyclerView fragment
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager()
-                        .popBackStack();
-            }
-        });
+        String welcomeText;
+        if (c == null) {
+            welcomeText = "Welcome nobody!";
+        } else {
+            String name = c.getName();
+            welcomeText = getString(R.string.welcome) + name + "!";
+        }
+        tv.setText(welcomeText);
 
         return v;
     }

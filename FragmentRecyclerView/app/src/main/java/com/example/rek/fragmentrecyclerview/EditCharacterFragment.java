@@ -2,9 +2,11 @@ package com.example.rek.fragmentrecyclerview;
 
 
 import android.app.AlertDialog;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -108,7 +110,13 @@ public class EditCharacterFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... voids) {
             long start = System.currentTimeMillis();
-            while (System.currentTimeMillis() - start < delayMillis) {}
+            while ( (System.currentTimeMillis()-start) < delayMillis) {
+                try {
+                    wait(delayMillis);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
             alertDialog.dismiss();
 
             return null;

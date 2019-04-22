@@ -7,15 +7,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -23,7 +18,7 @@ import android.widget.Toast;
 import java.util.List;
 
 
-public class RecyclerFragment extends Fragment implements RecyclerAdapter.ImageClickListener{
+public class RecyclerFragment extends Fragment{
 
     private CharacterViewModel mCharacterViewModel;
     private RecyclerAdapter adapto;
@@ -49,41 +44,7 @@ public class RecyclerFragment extends Fragment implements RecyclerAdapter.ImageC
             }
         });
 
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.title_characters);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-
         return view;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        // Needed to include menu in toolbar inside fragment
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_new, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menuNew:
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.frag_container, new AddCharacterFragment())
-                        .addToBackStack(null)
-                        .commit();
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-        return true;
     }
 
     /**
@@ -93,7 +54,7 @@ public class RecyclerFragment extends Fragment implements RecyclerAdapter.ImageC
     private void createRecyclerView(View v) {
         RecyclerView recyclo = v.findViewById(R.id.recyclerView);
         recyclo.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapto = new RecyclerAdapter( getActivity(), this);
+        adapto = new RecyclerAdapter(getActivity(), (RecyclerAdapter.ImageClickListener) getActivity());
         recyclo.setAdapter(adapto);
 
         ItemTouchHelper.SimpleCallback touchCallback = new ItemTouchHelper.SimpleCallback(
@@ -117,33 +78,4 @@ public class RecyclerFragment extends Fragment implements RecyclerAdapter.ImageC
         helpo.attachToRecyclerView(recyclo);
     }
 
-    /**
-     * Respond to clicks on welcome ImageView of each list_item
-     * @param c The character from the list_item
-     */
-    @Override
-    public void respondWelcomeImageclick(Character c) {
-        mCharacterViewModel.setCharacter(c);
-
-        getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.frag_container, new WelcomeFragment())
-                .addToBackStack(null)
-                .commit();
-    }
-
-    /**
-     * Respond to clicks on edit ImageView of each list_item
-     * @param c The character from the list_item
-     */
-    @Override
-    public void respondEditImageclick(Character c) {
-        mCharacterViewModel.setCharacter(c);
-
-        getActivity().getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.frag_container, new EditCharacterFragment())
-                .addToBackStack(null)
-                .commit();
-    }
 }
