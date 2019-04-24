@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#F3E8BF</color>
+
+    <color name="iron">#CCCCCC</color>
+    <color name="primary">#E43F3F</color>
+    <color name="purple">#591675</color>
+    <color name="lighter_grey">#DBD1D1</color>
+
+    <color name="button_inactive">#8A8787</color>
+
+    <color name="primary_blue">#081C92</color>
+    <color name="primary_blue_light">#7078B1</color>
+    <color name="accent_blue">#546EE2</color>
+
+    <color name="primary_orange">#FC8F00</color>
+    <color name="primary_orange_light">#EEAC55</color>
+</resources>
