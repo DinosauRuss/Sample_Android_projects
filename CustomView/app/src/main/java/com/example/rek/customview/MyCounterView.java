@@ -47,6 +47,7 @@ public class MyCounterView extends View {
         textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setColor(ContextCompat.getColor(context, android.R.color.white));
         textPaint.setTextSize(Math.round(64f * getResources().getDisplayMetrics().scaledDensity));
+        textPaint.setTextAlign(Paint.Align.CENTER);
 
         // Objects needed to draw on canvas
         backgroundRect = new RectF();
@@ -60,6 +61,7 @@ public class MyCounterView extends View {
     protected void onDraw(Canvas canvas) {
 
         // Get some dimensions
+
         final int canvasWidth = getWidth();
         final int canvasHeight = getHeight();
         final float canvasCenterX = canvasWidth * .5f;
@@ -73,9 +75,10 @@ public class MyCounterView extends View {
         canvas.drawLine(0, underlineY, canvasWidth, underlineY, underlinePaint);
 
         // Draw text
-        final float textWidth = textPaint.measureText(displayedCount);
-        final float textStart = Math.round(canvasCenterX - (textWidth * .5f));
-        canvas.drawText(displayedCount, textStart, underlineY-20, textPaint);
+//        final float textWidth = textPaint.measureText(displayedCount);
+//        final float textStart = Math.round(canvasCenterX - (textWidth * .5f));
+//        canvas.drawText(displayedCount, textStart, underlineY-20, textPaint);
+        canvas.drawText(displayedCount, canvasCenterX, underlineY-20, textPaint);
     }
 
     @Override
