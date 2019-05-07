@@ -27,40 +27,55 @@ import java.util.Random;
 public class MyDonutDrawable extends Drawable {
 
     private Paint basePaint;
+    private int currentBaseColor;
     private Paint icingPaint;
+    private int currentIcingColor;
     private Paint sprinklePaint;
     private Path holePath;
     private float scale;
     private List<Sprinkle> sprinkles;
     private float sprinkleRotation;
 
+    private static int[] baseColors = new int[] {
+            0xFFc6853b,     // Beige
+            0xFF994c1a,     // Brown
+            0xFFf4e77f      // Yellow
+    };
+
+    private static int[] icingColors = new int[] {
+            0xFF53250F,     // Dark Brown
+            0xFFfcaeae,     // Pink
+            0xFFf2b3e8      // Purple
+    };
+
+
     private static int[] sprinkleColors = new int[] {
-                0xFFFF0000,   // Red
-                0xFFFFFFFF,   // White
-                0xFFFFFF00,   // Yellow
-                0xFF0000FF,   // Blue
-                0xFF00FFFF,   // Cyan
-                0xFF00FF00,   // Green
-                0xFFFF00FF,   // Magenta
-                };
+            0xFFFF0000,     // Red
+            0xFFFFFFFF,     // White
+            0xFFFFFF00,     // Yellow
+            0xFF0000FF,     // Blue
+            0xFF00FFFF,     // Cyan
+            0xFF00FF00,     // Green
+            0xFFFF00FF,     // Magenta
+            };
 
 
     public MyDonutDrawable(int numOfSprinkles) {
 
         basePaint = new Paint();
-        basePaint.setColor(0xFFc6853b);
+        currentBaseColor = 0;
+        basePaint.setColor(baseColors[currentBaseColor]);
         basePaint.setStyle(Paint.Style.FILL);
         icingPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        icingPaint.setColor(0xFF53250F);
+        currentIcingColor = 0;
+        icingPaint.setColor(icingColors[currentIcingColor]);
         icingPaint.setStyle(Paint.Style.FILL);
         icingPaint.setPathEffect(
                 new ComposePathEffect(
                     new CornerPathEffect(40f),
                     new DiscretePathEffect(60f, 15f) ) );
         sprinklePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        sprinkleRotation = 0f;
         sprinkles = generateSprinkles(numOfSprinkles);
-        scale = 0.5f;
         holePath = new Path();
     }
 
@@ -78,28 +93,29 @@ public class MyDonutDrawable extends Drawable {
             );
         }
         return listo;
-
     }
 
-//    public void setBasePaintColor(int color) {
-//        basePaint.setColor(color);
-//        invalidateSelf();
-//    }
-//
-//    public void setIcingPaintColor(int color) {
-//        icingPaint.setColor(color);
-//        invalidateSelf();
-//    }
+    public void toggleBasePaintColor() {
+        currentBaseColor = (++currentBaseColor % baseColors.length);
+        basePaint.setColor(baseColors[currentBaseColor]);
+        invalidateSelf();
+    }
+
+    public void toggleIcingPaintColor() {
+        currentIcingColor = (++currentIcingColor % icingColors.length);
+        icingPaint.setColor(icingColors[currentIcingColor]);
+        invalidateSelf();
+    }
 
     public void setScale(float value) {
         scale = value;
         invalidateSelf();
     }
 
-//    public void setSprinkleRotation(float value) {
-//        sprinkleRotation = value;
-//        invalidateSelf();
-//    }
+    public void setSprinkleRotation(float value) {
+        sprinkleRotation = value;
+        invalidateSelf();
+    }
 
     @Override
     protected void onBoundsChange(Rect bounds) {
@@ -150,13 +166,13 @@ public class MyDonutDrawable extends Drawable {
             final float ringRadius = getBounds().width() / 3f;
             final float padding = 20f;
 
-            float modDistance = holeRadius + padding + (ringRadius - padding * 2) * sprinky.distance;
+            float modDistance = holeRadius + padding + ((ringRadius-(padding*2)) * sprinky.distance);
 
             canvas.save();
             canvas.rotate(sprinky.angle, centerX, centerY); // Rotate entire canvas around center
             canvas.translate(0f, modDistance);  // Translate canvas to sprinkle's position
             canvas.rotate(                          // Rotate canvas around sprinkle's location
-                    sprinky.rotation + 360f * sprinkleRotation,
+                    sprinky.rotation + (360f * sprinkleRotation),
                     centerX,
                     centerY);
 
@@ -199,7 +215,7 @@ public class MyDonutDrawable extends Drawable {
         private float distance;
         private float rotation;
 
-        public Sprinkle(int color, float angle, float distance, float rotation) {
+        private Sprinkle(int color, float angle, float distance, float rotation) {
             this.color = color;
             this.angle = angle;
             this.distance = distance;
