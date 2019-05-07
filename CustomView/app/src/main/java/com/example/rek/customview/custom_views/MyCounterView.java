@@ -1,4 +1,4 @@
-package com.example.rek.customview;
+package com.example.rek.customview.custom_views;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,6 +8,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.example.rek.customview.R;
+
 import java.util.Locale;
 
 

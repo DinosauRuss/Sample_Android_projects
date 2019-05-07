@@ -1,5 +1,4 @@
-package com.example.rek.customview;
-
+package com.example.rek.customview.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,14 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.rek.customview.custom_views.MyCounterView;
+import com.example.rek.customview.R;
+
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment {
+public class CounterFragment extends Fragment {
 
-
-    public MainFragment() {
+    public CounterFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +25,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =  inflater.inflate(R.layout.fragment_main, container, false);
+        View v =  inflater.inflate(R.layout.fragment_counter, container, false);
 
         final MyCounterView theCount = v.findViewById(R.id.theCount);
 
@@ -54,3 +55,5 @@ public class MainFragment extends Fragment {
     }
 
 }
+
+

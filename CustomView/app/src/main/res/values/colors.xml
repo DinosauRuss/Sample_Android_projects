@@ -6,4 +6,10 @@
 
     <color name="underline">#F35918</color>
     <color name="bg">#474242</color>
+
+    <color name="RED">#FF0000</color>
+    <color name="YELLOW">#FFFF00</color>
+    <color name="CYAN">#00FFFF</color>
+    <color name="MAGENTA">#FF00FF</color>
+
 </resources>

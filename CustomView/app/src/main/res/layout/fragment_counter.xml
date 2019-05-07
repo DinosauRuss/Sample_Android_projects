@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:orientation="vertical"
-    tools:context=".MainFragment">
+    tools:context=".fragments.CounterFragment">
 
-    <com.example.rek.customview.MyCounterView
+    <com.example.rek.customview.custom_views.MyCounterView
         android:id="@+id/theCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
