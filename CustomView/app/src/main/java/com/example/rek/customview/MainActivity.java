@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.example.rek.customview.fragments.ButtonFragment;
 import com.example.rek.customview.fragments.CounterFragment;
 import com.example.rek.customview.fragments.DonutFragment;
 import com.example.rek.customview.fragments.OnFragmentInteractionListener;
@@ -19,9 +20,12 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragmentContainer, new SelectorFragment())
-                .commit();
+        // Only load selector fragment on first run
+        if (getSupportFragmentManager().getBackStackEntryCount() <= 0) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragmentContainer, new SelectorFragment())
+                    .commit();
+        }
     }
 
     @Override
@@ -33,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 break;
             case R.id.btnDonut:
                 frago = new DonutFragment();
+                break;
+            case R.id.btnButton:
+                frago = new ButtonFragment();
                 break;
             default:
                 return;

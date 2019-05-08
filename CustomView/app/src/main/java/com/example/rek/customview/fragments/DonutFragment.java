@@ -1,6 +1,5 @@
 package com.example.rek.customview.fragments;
 
-import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.os.Bundle;

@@ -36,6 +36,14 @@
             tools:ignore="ButtonStyle"
             android:layout_margin="5dp" />
 
+        <Button
+            android:id="@+id/btnButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button"
+            tools:ignore="ButtonStyle"
+            android:layout_margin="5dp" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,6 @@
 package com.example.rek.customview.custom_views;
 
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.ComposePathEffect;
@@ -58,7 +59,6 @@ public class MyDonutDrawable extends Drawable {
             0xFF00FF00,     // Green
             0xFFFF00FF,     // Magenta
             };
-
 
     public MyDonutDrawable(int numOfSprinkles) {
 
