@@ -66,6 +66,11 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
     private void transactFragment(Fragment frag) {
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(
+                        R.animator.slide_left_enter,
+                        R.animator.slide_left_exit,
+                        R.animator.slide_right_enter,
+                        R.animator.slide_right_exit)
                 .replace(R.id.fragmentContainer, frag)
                 .addToBackStack(null)
                 .commit();

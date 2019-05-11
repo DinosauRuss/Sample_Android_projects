@@ -169,11 +169,11 @@ public class MyDonutDrawable extends Drawable {
             final float ringRadius = getBounds().width() / 3f;
             final float padding = 20f;
 
-            float modDistance = holeRadius + padding + ((ringRadius-(padding*2)) * sprinky.distance);
+            float sprinkleLoc = (holeRadius + padding) + ((ringRadius-(padding*2)) * sprinky.distance);
 
             canvas.save();
             canvas.rotate(sprinky.angle, centerX, centerY); // Rotate entire canvas around center
-            canvas.translate(0f, modDistance);  // Translate canvas to sprinkle's position
+            canvas.translate(0f, sprinkleLoc);  // Translate canvas to sprinkle's position
             canvas.rotate(                          // Rotate canvas around sprinkle's location
                     sprinky.rotation + (360f * sprinkleRotation),
                     centerX,
