@@ -14,4 +14,11 @@
     <color name="GREEN">#5FB301</color>
     <color name="DARK_GREEN">#4F9744</color>
 
+    <color name="colorPrimaryOrange">#FF9800</color>
+    <color name="colorPrimaryDarkOrange">#AD5903</color>
+    <color name="colorAccentOrange">#7A311A</color>
+    <color name="colorTextOrange">#212121</color>
+    <color name="colorTextSecondaryOrange">#757575</color>
+    <color name="colorPrimaryLightOrange">#FDEBDE</color>
+
 </resources>

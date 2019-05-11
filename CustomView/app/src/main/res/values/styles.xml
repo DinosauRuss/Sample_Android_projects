@@ -8,4 +8,28 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="OrangeTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimaryOrange</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkOrange</item>
+        <item name="colorAccent">@color/colorAccentOrange</item>
+        <item name="android:textColor">@color/colorTextOrange</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondaryOrange</item>
+        <item name="android:colorBackground">@color/colorPrimaryLightOrange</item>
+
+        <item name="actionOverflowMenuStyle">@style/OverflowMenu</item>
+        <item name="android:itemTextAppearance">@style/OverflowTextAppearance</item>
+    </style>
+
+    <style name="OverflowMenu" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:dropDownVerticalOffset">8dp</item>
+        <item name="android:overlapAnchor">false</item>
+        <item name="android:popupBackground">@color/colorPrimaryLightOrange</item>
+    </style>
+
+    <style name="OverflowTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/colorAccentOrange</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+
 </resources>

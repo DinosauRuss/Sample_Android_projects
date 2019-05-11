@@ -15,6 +15,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.res.ResourcesCompat;
+
+import com.example.rek.customview.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +76,7 @@ public class MyDonutDrawable extends Drawable {
         icingPaint.setPathEffect(
                 new ComposePathEffect(
                     new CornerPathEffect(40f),
-                    new DiscretePathEffect(60f, 15f) ) );
+                    new DiscretePathEffect(60f, 19f) ) );
         sprinklePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         sprinkles = generateSprinkles(numOfSprinkles);
         holePath = new Path();
@@ -139,7 +142,7 @@ public class MyDonutDrawable extends Drawable {
         // Scale as appropriate
         canvas.scale(scale, scale, centerX, centerY);
 
-        // Draw outside the hole only
+        // Don't draw the hole
         if (Build.VERSION.SDK_INT >= 26) {
             canvas.clipOutPath(holePath);
         } else {
@@ -157,7 +160,7 @@ public class MyDonutDrawable extends Drawable {
         canvas.drawCircle(
                 centerX,
                 centerY,
-                getBounds().width() / 2.1f,
+                getBounds().width() / 2.17f,
                 icingPaint);
 
         // Draw the sprinkles

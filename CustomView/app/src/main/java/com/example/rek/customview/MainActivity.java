@@ -3,7 +3,8 @@ package com.example.rek.customview;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.example.rek.customview.fragments.ButtonFragment;
 import com.example.rek.customview.fragments.CounterFragment;
@@ -28,25 +29,38 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     }
 
     @Override
-    public void onFragmentInteraction(View v) {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
         Fragment frago;
-        switch (v.getId()) {
-            case R.id.btnCounter:
+        switch (item.getItemId()) {
+            case R.id.menuCounter:
                 frago = new CounterFragment();
                 break;
-            case R.id.btnDonut:
+            case R.id.menuDonut:
                 frago = new DonutFragment();
                 break;
-            case R.id.btnButton:
+            case R.id.menuButtons:
                 frago = new ButtonFragment();
                 break;
-            case R.id.btnAvd:
+            case R.id.menuAvd:
                 frago = new AvdFragment();
                 break;
             default:
-                return;
+                return true;
         }
         transactFragment(frago);
+        return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(int id) {
 
     }
 

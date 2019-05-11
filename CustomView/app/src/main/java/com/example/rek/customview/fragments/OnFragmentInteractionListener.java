@@ -15,6 +15,6 @@ import android.view.View;
  */
 public interface OnFragmentInteractionListener {
 
-        void onFragmentInteraction(View v);
+        void onFragmentInteraction(int id);
 
 }

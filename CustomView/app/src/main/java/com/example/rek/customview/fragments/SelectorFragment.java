@@ -28,41 +28,12 @@ public class SelectorFragment extends Fragment {
         // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_selector, container, false);
 
-        Button btnCounter = v.findViewById(R.id.btnCounter);
-        btnCounter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onButtonPressed((Button) view);
-            }
-        });
-        Button btnDonut = v.findViewById(R.id.btnDonut);
-        btnDonut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onButtonPressed((Button) view);
-            }
-        });
-        Button btnButton = v.findViewById(R.id.btnButton);
-        btnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onButtonPressed((Button) view);
-            }
-        });
-        Button btnAvd = v.findViewById(R.id.btnAvd);
-        btnAvd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onButtonPressed((Button) v);
-            }
-        });
-
         return v;
     }
 
-    public void onButtonPressed(Button b) {
+    public void onButtonPressed(int id) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(b);
+            mListener.onFragmentInteraction(id);
         }
     }
 
