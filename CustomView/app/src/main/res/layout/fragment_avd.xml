@@ -3,24 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.AvdFragment"
+    android:layout_margin="8dp"
     android:gravity="center"
     android:orientation="vertical"
-    android:layout_margin="8dp">
+    tools:context=".fragments.AvdFragment">
+
+    <!--<ImageView-->
+        <!--android:id="@+id/imgSort"-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:layout_margin="5dp"-->
+        <!--android:src="@drawable/icon_sort_animator"-->
+        <!--tools:background="@color/MAGENTA"/>-->
 
     <ImageView
+        android:id="@+id/imgSort"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:id="@+id/imgSort"
-        android:src="@drawable/sort_animator"
         android:layout_margin="5dp"
-        tools:background="@color/MAGENTA"/>
+        android:src="@drawable/avd_circle_anim"
+        tools:background="@color/MAGENTA" />
 
     <ImageView
+        android:id="@+id/imgSort2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imgSort2"
+        android:layout_margin="5dp"
         android:src="@drawable/avd_anim_to_yellow"
-        tools:background="@color/DARK_GREEN"
-        android:layout_margin="5dp"/>
+        tools:background="@color/DARK_GREEN" />
 </LinearLayout>

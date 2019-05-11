@@ -4,7 +4,6 @@ import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,14 +50,16 @@ public class AvdFragment extends Fragment {
         Drawable d = null;
         switch (view.getId()) {
             case R.id.imgSort:
-                d = redrawFirstImageView();
+//                d = redrawFirstImageView();
+//                view.setImageDrawable(d);
+                d = view.getDrawable();
                 break;
             case R.id.imgSort2:
                 d = animateSecondImageView();
+                view.setImageDrawable(d);
                 break;
         }
         sortedFlag = !sortedFlag;
-        view.setImageDrawable(d);
         if (d instanceof AnimatedVectorDrawable) {
             ((AnimatedVectorDrawable) d).start();
         }
@@ -66,9 +67,9 @@ public class AvdFragment extends Fragment {
 
     private Drawable redrawFirstImageView() {
         if (sortedFlag) {
-            return ResourcesCompat.getDrawable(getResources(), R.drawable.unsort_animator, null);
+            return ResourcesCompat.getDrawable(getResources(), R.drawable.icon_unsort_animator, null);
         } else {
-            return ResourcesCompat.getDrawable(getResources(), R.drawable.sort_animator, null);
+            return ResourcesCompat.getDrawable(getResources(), R.drawable.icon_sort_animator, null);
         }
     }
 
