@@ -49,6 +49,13 @@ public class SelectorFragment extends Fragment {
                 onButtonPressed((Button) view);
             }
         });
+        Button btnAvd = v.findViewById(R.id.btnAvd);
+        btnAvd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonPressed((Button) v);
+            }
+        });
 
         return v;
     }

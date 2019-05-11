@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
+import com.example.rek.customview.Constants;
 import com.example.rek.customview.R;
 
 public class GreenView extends View{
@@ -31,7 +32,6 @@ public class GreenView extends View{
     private Paint accentPaint;
 
     private Rect textBounds;
-    private Paint.FontMetrics fm;
     private float textSizeSp;
     private float initialTextSizeSp;
     private String label;
@@ -74,14 +74,12 @@ public class GreenView extends View{
 
         // Init values
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.GreenView);
-        if (ta.hasValue(R.styleable.GreenView_label)) {
-           setLabel(ta.getString(R.styleable.GreenView_label));
-        } else {
-            setLabel("");
-        }
-        float size = ta.getDimension(R.styleable.GreenView_textSize, getLabelSizePx(defaultTextSize));
+        setLabel(ta.getString(R.styleable.GreenView_label));
+
+        float size = ta.getDimension(R.styleable.GreenView_android_textSize, textSizeIntToSp(defaultTextSize));
         setTextSizeSp(size);
         initialTextSizeSp = size;
+
         defaultPaddingDp = Math.round(defaultPadding * getResources().getDisplayMetrics().density);
 
         ta.recycle();
@@ -89,13 +87,14 @@ public class GreenView extends View{
         // Objects needed to draw on canvas
         backgroundRect = new RectF();
         cornerRadius = Math.round(12f * getResources().getDisplayMetrics().density);
-        fm = textPaint.getFontMetrics();
         textBounds = new Rect();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        Paint.FontMetrics fm = textPaint.getFontMetrics();
 
         // Measure max width of label
         final float maxTextWidth = textPaint.measureText(label);
@@ -141,7 +140,8 @@ public class GreenView extends View{
                 accentPaint);
 
         // Draw label
-        final int textBottom = Math.round(centerY - ((fm.descent + fm.ascent)/2f) );
+        Paint.FontMetrics metrics = textPaint.getFontMetrics();
+        final int textBottom = Math.round(centerY - ((metrics.descent + metrics.ascent)/2f) );
         canvas.drawText(
                 label,
                 centerX,
@@ -154,6 +154,9 @@ public class GreenView extends View{
     }
 
     public void setLabel(String text) {
+        if (text == null) {
+            text = "";
+        }
         this.label = text;
         invalidate();
     }
@@ -168,7 +171,7 @@ public class GreenView extends View{
         invalidate();
     }
 
-    private float getLabelSizePx(float size) {
+    private float textSizeIntToSp(float size) {
         return Math.round(size * getResources().getDisplayMetrics().scaledDensity);
     }
 

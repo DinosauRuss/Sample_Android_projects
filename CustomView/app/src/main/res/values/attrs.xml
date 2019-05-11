@@ -2,7 +2,8 @@
 <resources>
 
     <declare-styleable name="GreenView">
-        <attr name="textSize" format="dimension"/>
+        <!--<attr name="textSize" format="dimension"/>-->
+        <attr name="android:textSize"/>
         <attr name="label" format="string" />
     </declare-styleable>
 

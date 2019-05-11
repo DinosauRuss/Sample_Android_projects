@@ -80,7 +80,7 @@ public class MyCounterView extends View {
         // Draw text
 //        final float textWidth = textPaint.measureText(displayedCount);
 //        final float textStart = Math.round(canvasCenterX - (textWidth * .5f));
-//        canvas.drawText(displayedCount, textStart, underlineY-20, textPaint);
+//        canvas.updateIndicator(displayedCount, textStart, underlineY-20, textPaint);
         canvas.drawText(displayedCount, canvasCenterX, underlineY-20, textPaint);
     }
 

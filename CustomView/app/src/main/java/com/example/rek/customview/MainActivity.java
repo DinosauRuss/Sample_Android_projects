@@ -1,17 +1,16 @@
 package com.example.rek.customview;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.example.rek.customview.fragments.ButtonFragment;
 import com.example.rek.customview.fragments.CounterFragment;
 import com.example.rek.customview.fragments.DonutFragment;
 import com.example.rek.customview.fragments.OnFragmentInteractionListener;
 import com.example.rek.customview.fragments.SelectorFragment;
+import com.example.rek.customview.fragments.AvdFragment;
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
@@ -40,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 break;
             case R.id.btnButton:
                 frago = new ButtonFragment();
+                break;
+            case R.id.btnAvd:
+                frago = new AvdFragment();
                 break;
             default:
                 return;

@@ -1,0 +1,14 @@
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/icon"
+    android:height="40dp"
+    android:width="40dp">
+
+    <target
+        android:name="group"
+        android:animation="@animator/rotation_animator" />
+
+    <target
+        android:name="path_1"
+        android:animation="@animator/color_animations"/>
+
+</animated-vector>
