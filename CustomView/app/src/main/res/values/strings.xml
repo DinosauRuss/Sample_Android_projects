@@ -10,4 +10,5 @@
     <string name="button">Button</string>
     <string name="avd">AVD</string>
     <string name="widgets">Example Widgets</string>
+    <string name="avd2">AVD2</string>
 </resources>

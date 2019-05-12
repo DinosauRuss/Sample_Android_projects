@@ -8,20 +8,12 @@
     android:orientation="vertical"
     tools:context=".fragments.AvdFragment">
 
-    <!--<ImageView-->
-        <!--android:id="@+id/imgSort"-->
-        <!--android:layout_width="200dp"-->
-        <!--android:layout_height="200dp"-->
-        <!--android:layout_margin="5dp"-->
-        <!--android:src="@drawable/icon_sort_animator"-->
-        <!--tools:background="@color/MAGENTA"/>-->
-
     <ImageView
         android:id="@+id/imgSort"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_margin="5dp"
-        android:src="@drawable/avd_circle_anim"
+        android:src="@drawable/icon_sort_animator"
         tools:background="@color/MAGENTA" />
 
     <ImageView

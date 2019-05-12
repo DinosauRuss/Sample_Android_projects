@@ -16,7 +16,8 @@
                     android:name="primarypath"
                     android:pathData="M 27.12 3.365 C 20.822 3.365 14.776 5.869 10.322 10.322 C 5.869 14.776 3.365 20.822 3.365 27.12 C 3.365 33.418 5.869 39.464 10.322 43.917 C 14.776 48.371 20.822 50.875 27.12 50.875 C 32.136 50.875 37.025 49.286 41.083 46.338 C 45.141 43.39 48.162 39.231 49.712 34.461 C 51.262 29.69 51.262 24.549 49.712 19.779 C 48.162 15.009 45.141 10.85 41.083 7.901 C 37.025 4.953 32.136 3.365 27.12 3.365 Z"
                     android:strokeColor="#000000"
-                    android:strokeWidth="5"/>
+                    android:strokeWidth="5"
+                    android:trimPathStart=".1"/>
             </group>
             <path
                 android:name="secondarypath"
@@ -32,7 +33,7 @@
                 <objectAnimator
                     android:propertyName="trimPathStart"
                     android:duration="1507"
-                    android:valueFrom="0"
+                    android:valueFrom=".1"
                     android:valueTo="0.5"
                     android:valueType="floatType"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"/>
@@ -41,7 +42,7 @@
                     android:startOffset="2497"
                     android:duration="1773"
                     android:valueFrom="0.5"
-                    android:valueTo="0"
+                    android:valueTo=".1"
                     android:valueType="floatType"
                     android:interpolator="@android:anim/accelerate_decelerate_interpolator"/>
                 <objectAnimator
@@ -68,9 +69,9 @@
             <objectAnimator
                 android:propertyName="rotation"
                 android:startOffset="505"
-                android:duration="3839"
+                android:duration="4000"
                 android:valueFrom="0"
-                android:valueTo="360"
+                android:valueTo="720"
                 android:valueType="floatType"
                 android:interpolator="@android:interpolator/fast_out_slow_in"/>
         </aapt:attr>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.rek.customview.fragments.Avd2Fragment;
 import com.example.rek.customview.fragments.ButtonFragment;
 import com.example.rek.customview.fragments.CounterFragment;
 import com.example.rek.customview.fragments.DonutFragment;
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 break;
             case R.id.menuAvd:
                 frago = new AvdFragment();
+                break;
+            case R.id.menuAvd2:
+                frago = new Avd2Fragment();
                 break;
             default:
                 return true;

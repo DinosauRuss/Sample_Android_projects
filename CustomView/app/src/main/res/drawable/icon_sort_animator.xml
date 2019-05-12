@@ -5,7 +5,7 @@
 
     <target
         android:name="group"
-        android:animation="@animator/rotation_animator" />
+        android:animation="@animator/rotation_animator"/>
 
     <target
         android:name="path_1"

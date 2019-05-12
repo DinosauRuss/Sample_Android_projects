@@ -50,9 +50,8 @@ public class AvdFragment extends Fragment {
         Drawable d = null;
         switch (view.getId()) {
             case R.id.imgSort:
-//                d = redrawFirstImageView();
-//                view.setImageDrawable(d);
-                d = view.getDrawable();
+                d = redrawFirstImageView();
+                view.setImageDrawable(d);
                 break;
             case R.id.imgSort2:
                 d = animateSecondImageView();
