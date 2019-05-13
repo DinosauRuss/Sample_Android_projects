@@ -11,4 +11,5 @@
     <string name="avd">AVD</string>
     <string name="widgets">Example Widgets</string>
     <string name="avd2">AVD2</string>
+    <string name="scrolling_counter">Scrolling Counter</string>
 </resources>

@@ -1,14 +1,14 @@
 <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/icon"
+    android:drawable="@drawable/vd_icon_sort"
     android:height="40dp"
     android:width="40dp">
 
     <target
         android:name="group"
-        android:animation="@animator/reverse_rotation_animator" />
+        android:animation="@animator/animator_icon_rotation_unsort" />
 
     <target
         android:name="path_1"
-        android:animation="@animator/reverse_color_animations"/>
+        android:animation="@animator/animator_icon_color_unsort"/>
 
 </animated-vector>

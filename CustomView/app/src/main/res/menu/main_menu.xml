@@ -32,6 +32,10 @@
                 android:id="@+id/menuAvd2"
                 android:title="@string/avd2"
                 app:showAsAction="never" />
+            <item
+                android:id="@+id/menuScrollCounter"
+                android:title="@string/scrolling_counter"
+                app:showAsAction="never" />
         </menu>
 
     </item>

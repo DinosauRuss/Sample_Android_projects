@@ -1,0 +1,28 @@
+<vector
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="vector"
+    android:width="26dp"
+    android:height="36dp"
+    android:viewportWidth="26"
+    android:viewportHeight="36">
+    <group
+        android:name="group_9"
+        android:scaleX="0.98"
+        android:scaleY="0.98">
+        <path
+            android:name="path_9"
+            android:pathData="M 18.786 12.109 C 18.786 15.406 16.501 17.731 13.548 17.731 C 10.539 17.731 8.31 15.298 8.31 11.839 C 8.31 8.38 10.428 6.163 13.325 6.163 C 16.39 6.163 18.786 8.488 18.786 12.109 Z M 18.897 20.487 C 17.393 27.244 14.273 30.649 8.533 31.244 C 4.019 31.73 2.069 30.973 2.069 34 C 2.069 35.459 3.797 36 7.363 36 C 18.618 36 26.086 28.217 26.086 16.325 C 26.086 6.596 21.183 1.029 13.66 1.029 C 6.137 1.029 1.4 5.623 1.4 12.217 C 1.4 18.596 5.969 23.514 11.765 23.514 C 14.607 23.514 17.17 22.433 18.897 20.487 Z"
+            android:fillColor="#000"/>
+    </group>
+    <group
+        android:name="group_0"
+        android:translateY="36"
+        android:scaleX="0.98"
+        android:scaleY="0.98">
+        <path
+            android:name="path_0"
+            android:pathData="M 13.321 36 C 20.736 36 25.714 29.524 25.714 18.514 C 25.714 7.504 20.736 1.029 13.321 1.029 C 5.955 1.029 1.029 7.451 1.029 18.514 C 1.029 29.524 5.955 36 13.321 36 Z M 13.371 6.965 C 16.724 6.965 19.06 10.905 19.06 18.461 C 19.06 26.07 16.724 30.063 13.371 30.063 C 9.968 30.063 7.682 26.016 7.682 18.461 C 7.682 10.958 10.019 6.965 13.371 6.965 Z"
+            android:fillColor="#000"
+            android:fillAlpha="0"/>
+    </group>
+</vector>

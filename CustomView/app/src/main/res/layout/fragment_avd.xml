@@ -13,7 +13,7 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_margin="5dp"
-        android:src="@drawable/icon_sort_animator"
+        android:src="@drawable/avd_icon_sort"
         tools:background="@color/MAGENTA" />
 
     <ImageView
@@ -21,6 +21,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:src="@drawable/avd_anim_to_yellow"
+        android:src="@drawable/avd_anim_sort_to_yellow"
         tools:background="@color/DARK_GREEN" />
 </LinearLayout>

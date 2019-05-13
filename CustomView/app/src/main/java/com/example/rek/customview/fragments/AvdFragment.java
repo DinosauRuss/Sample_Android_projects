@@ -66,17 +66,17 @@ public class AvdFragment extends Fragment {
 
     private Drawable redrawFirstImageView() {
         if (sortedFlag) {
-            return ResourcesCompat.getDrawable(getResources(), R.drawable.icon_unsort_animator, null);
+            return ResourcesCompat.getDrawable(getResources(), R.drawable.avd_icon_unsort, null);
         } else {
-            return ResourcesCompat.getDrawable(getResources(), R.drawable.icon_sort_animator, null);
+            return ResourcesCompat.getDrawable(getResources(), R.drawable.avd_icon_sort, null);
         }
     }
 
     private Drawable animateSecondImageView() {
         if (sortedFlag) {
-            return ResourcesCompat.getDrawable(getResources(), R.drawable.avd_anim_to_black, null);
+            return ResourcesCompat.getDrawable(getResources(), R.drawable.avd_anim_sort_to_black, null);
         } else {
-            return ResourcesCompat.getDrawable(getResources(), R.drawable.avd_anim_to_yellow, null);
+            return ResourcesCompat.getDrawable(getResources(), R.drawable.avd_anim_sort_to_yellow, null);
         }
     }
 

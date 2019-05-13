@@ -75,7 +75,7 @@ public class Avd2Fragment extends Fragment {
 
         if (circleDirty) {
             AnimatedVectorDrawableCompat d = AnimatedVectorDrawableCompat.create(
-                    v.getContext(), R.drawable.avd_circle_anim);
+                    v.getContext(), R.drawable.avd_anim_circle);
             v.setImageDrawable(d);
         } else {
             AnimatedVectorDrawableCompat avdc = (AnimatedVectorDrawableCompat) v.getDrawable() ;
@@ -99,7 +99,7 @@ public class Avd2Fragment extends Fragment {
 
         if (fingerprintDirty) {
             AnimatedVectorDrawableCompat d = AnimatedVectorDrawableCompat.create(
-                    v.getContext(), R.drawable.avd_fingerprint_anim);
+                    v.getContext(), R.drawable.avd_anim_fingerprint);
             v.setImageDrawable(d);
         } else {
             AnimatedVectorDrawableCompat avdc = (AnimatedVectorDrawableCompat) v.getDrawable();

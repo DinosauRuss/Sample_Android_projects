@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="digit_avd">
+        <item>@drawable/avd_digits_0_1</item>
+        <item>@drawable/avd_digits_1_2</item>
+        <item>@drawable/avd_digits_2_3</item>
+        <item>@drawable/avd_digits_3_4</item>
+        <item>@drawable/avd_digits_4_5</item>
+        <item>@drawable/avd_digits_5_6</item>
+        <item>@drawable/avd_digits_6_7</item>
+        <item>@drawable/avd_digits_7_8</item>
+        <item>@drawable/avd_digits_8_9</item>
+        <item>@drawable/avd_digits_9_0</item>
+    </array>
+
+</resources>

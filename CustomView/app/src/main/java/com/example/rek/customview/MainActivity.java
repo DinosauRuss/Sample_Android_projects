@@ -11,6 +11,7 @@ import com.example.rek.customview.fragments.ButtonFragment;
 import com.example.rek.customview.fragments.CounterFragment;
 import com.example.rek.customview.fragments.DonutFragment;
 import com.example.rek.customview.fragments.OnFragmentInteractionListener;
+import com.example.rek.customview.fragments.ScrollCounterFragment;
 import com.example.rek.customview.fragments.SelectorFragment;
 import com.example.rek.customview.fragments.AvdFragment;
 
@@ -55,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 break;
             case R.id.menuAvd2:
                 frago = new Avd2Fragment();
+                break;
+            case R.id.menuScrollCounter:
+                frago = new ScrollCounterFragment();
                 break;
             default:
                 return true;
