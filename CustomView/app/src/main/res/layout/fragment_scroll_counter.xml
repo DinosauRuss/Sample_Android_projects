@@ -8,14 +8,10 @@
     android:orientation="vertical"
     tools:context=".fragments.ScrollCounterFragment">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <LinearLayout
+    <com.example.rek.customview.custom_views.DigitScroller
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:id="@+id/digitScroller"/>
 
         <Button
             android:id="@+id/btnIncrement"
@@ -25,15 +21,15 @@
             android:text="increment"
             tools:ignore="ButtonStyle" />
 
-        <Button
-            android:id="@+id/btnDecrement"
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="decrement"
-            tools:ignore="ButtonStyle" />
+            android:inputType="number"
+            android:layout_marginTop="8dp"
+            android:id="@+id/edtDigit"
+            android:maxLength="1"
+            android:hint="Set Digit"/>
 
-    </LinearLayout>
 
 </LinearLayout>
 

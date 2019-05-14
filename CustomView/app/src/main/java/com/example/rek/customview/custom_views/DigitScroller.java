@@ -45,13 +45,6 @@ public class DigitScroller extends android.support.v7.widget.AppCompatImageView 
         setImageDrawable(initialAvd);
     }
 
-    public void increment() {
-        if (!animationRunning) {
-            currentCount = ++currentCount % maxCount;
-            animateCount();
-        }
-    }
-
     private void animateCount() {
         // Animate digit
         Drawable drawable = getDrawable();
@@ -62,9 +55,10 @@ public class DigitScroller extends android.support.v7.widget.AppCompatImageView 
                         @Override
                         public void onAnimationEnd(Drawable drawable) {
                             // Set drawable to new digit, waiting for animation
-                            AnimatedVectorDrawableCompat avd = AnimatedVectorDrawableCompat.create(
-                                    getContext(), mDrawables[currentCount]);
-                            setImageDrawable(avd);
+//                            AnimatedVectorDrawableCompat avd = AnimatedVectorDrawableCompat.create(
+//                                    getContext(), mDrawables[currentCount]);
+//                            setImageDrawable(avd);
+                            setDrawableFromCount();
                             animationRunning = false;
                         }
                     });
@@ -72,5 +66,24 @@ public class DigitScroller extends android.support.v7.widget.AppCompatImageView 
             animationRunning = true;
             ((AnimatedVectorDrawableCompat) drawable).start();
         }
+    }
+
+    private void setDrawableFromCount() {
+        AnimatedVectorDrawableCompat avd = AnimatedVectorDrawableCompat.create(
+                getContext(), mDrawables[currentCount]);
+        setImageDrawable(avd);
+    }
+
+    public void increment() {
+        if (!animationRunning) {
+            currentCount = ++currentCount % maxCount;
+            animateCount();
+        }
+    }
+
+    public void setDigit(int digit) {
+        currentCount = digit;
+        setDrawableFromCount();
+
     }
 }
