@@ -11,7 +11,8 @@
     <com.example.rek.customview.custom_views.DigitScroller
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/digitScroller"/>
+        android:id="@+id/digitScroller"
+        app:startingDigit="8"/>
 
         <Button
             android:id="@+id/btnIncrement"
@@ -29,6 +30,33 @@
             android:id="@+id/edtDigit"
             android:maxLength="1"
             android:hint="Set Digit"/>
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_linear_scale"/>
+
+    <com.example.rek.customview.custom_views.ScrollCounter
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:id="@+id/counter" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="increment"
+        android:id="@+id/btnIncrementScrollCounter"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:layout_marginTop="8dp"
+        android:id="@+id/edtCounter"
+        android:maxLength="4"
+        android:hint="Set count"/>
 
 
 </LinearLayout>

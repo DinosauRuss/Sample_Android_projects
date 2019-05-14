@@ -18,4 +18,12 @@ public class Utils {
     public static float pxToSp(float px) {
         return px / Resources.getSystem().getDisplayMetrics().scaledDensity;
     }
+
+    public static float pxToDp(float px) {
+        return px / Resources.getSystem().getDisplayMetrics().density;
+    }
+
+    public static int constrainNumber(int number, int min, int max) {
+        return Math.min( Math.max(number, min), max );
+    }
 }

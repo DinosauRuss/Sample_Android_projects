@@ -1,6 +1,7 @@
 package com.example.rek.customview.custom_views;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
@@ -9,9 +10,13 @@ import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
 import android.util.AttributeSet;
 
 import com.example.rek.customview.R;
+import com.example.rek.customview.Utils;
 
 
 public class DigitScroller extends android.support.v7.widget.AppCompatImageView {
+
+    private static final int MAX_DIGIT = 9;
+    private static final int MIN_DIGIT = 0;
 
     private int currentCount;
     private int maxCount;
@@ -21,16 +26,17 @@ public class DigitScroller extends android.support.v7.widget.AppCompatImageView 
 
     public DigitScroller(Context context) {
         super(context);
-        init();
+        init(context, null);
     }
 
     public DigitScroller(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(context, attrs);
     }
 
-    private void init() {
+    private void init(Context context, AttributeSet attrs) {
 
+        // Load avd references into local array
         TypedArray ta = getResources().obtainTypedArray(R.array.digit_avd);
         int length = ta.length();
         mDrawables = new int[length];
@@ -40,9 +46,17 @@ public class DigitScroller extends android.support.v7.widget.AppCompatImageView 
         maxCount = length;
         ta.recycle();
 
-        AnimatedVectorDrawableCompat initialAvd = AnimatedVectorDrawableCompat.create(
-                getContext(), mDrawables[0]);
-        setImageDrawable(initialAvd);
+        readAttrs(context, attrs);
+        setDrawableFromCount();
+    }
+
+    private void readAttrs(Context context, AttributeSet attrs) {
+        if (attrs != null) {
+            TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.DigitScroller);
+            currentCount = attributes.getInt(R.styleable.DigitScroller_startingDigit, MIN_DIGIT);
+
+            attributes.recycle();
+        }
     }
 
     private void animateCount() {
@@ -54,10 +68,6 @@ public class DigitScroller extends android.support.v7.widget.AppCompatImageView 
                     new Animatable2Compat.AnimationCallback() {
                         @Override
                         public void onAnimationEnd(Drawable drawable) {
-                            // Set drawable to new digit, waiting for animation
-//                            AnimatedVectorDrawableCompat avd = AnimatedVectorDrawableCompat.create(
-//                                    getContext(), mDrawables[currentCount]);
-//                            setImageDrawable(avd);
                             setDrawableFromCount();
                             animationRunning = false;
                         }
@@ -81,9 +91,20 @@ public class DigitScroller extends android.support.v7.widget.AppCompatImageView 
         }
     }
 
-    public void setDigit(int digit) {
-        currentCount = digit;
-        setDrawableFromCount();
+    public void setDigitAnim(int digit) {
+        int newDigit = Utils.constrainNumber(digit, MIN_DIGIT, MAX_DIGIT);
 
+        if ( (newDigit-currentCount == 1 || newDigit-currentCount == -9) ) {
+            increment();
+        } else {
+            currentCount = newDigit;
+            setDrawableFromCount();
+        }
     }
+
+    public void setDigit(int newDigit) {
+        currentCount = newDigit;
+        setDrawableFromCount();
+    }
+
 }

@@ -6,4 +6,8 @@
         <attr name="android:text"/>
     </declare-styleable>
 
+    <declare-styleable name="DigitScroller">
+        <attr name="startingDigit" format="integer"/>
+    </declare-styleable>
+
 </resources>
