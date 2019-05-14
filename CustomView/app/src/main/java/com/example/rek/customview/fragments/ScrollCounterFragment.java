@@ -23,13 +23,10 @@ public class ScrollCounterFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_scroll_counter, container, false);
 
-        final DigitScroller digitScroller = v.findViewById(R.id.digitScroller);
-
         Button btnIncrement = v.findViewById(R.id.btnIncrement);
         btnIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                digitScroller.increment();
             }
         });
 

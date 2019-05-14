@@ -39,6 +39,10 @@ public class DigitScroller extends android.support.v7.widget.AppCompatImageView 
         }
         maxCount = length;
         ta.recycle();
+
+        AnimatedVectorDrawableCompat initialAvd = AnimatedVectorDrawableCompat.create(
+                getContext(), mDrawables[0]);
+        setImageDrawable(initialAvd);
     }
 
     public void increment() {

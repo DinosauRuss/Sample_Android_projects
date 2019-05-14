@@ -11,14 +11,13 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 
-import com.example.rek.customview.Constants;
 import com.example.rek.customview.R;
+import com.example.rek.customview.Utils;
 
 public class GreenView extends View{
 
@@ -32,8 +31,8 @@ public class GreenView extends View{
     private Paint accentPaint;
 
     private Rect textBounds;
-    private float textSizeSp;
-    private float initialTextSizeSp;
+    private float textSizeSpPx;
+    private float initialTextSizeSpPx;
     private String label;
     private int defaultPaddingDp;
 
@@ -72,22 +71,25 @@ public class GreenView extends View{
         textPaint.setColor(Color.WHITE);
         textPaint.setTextAlign(Paint.Align.CENTER);
 
-        // Init values
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.GreenView);
-        setLabel(ta.getString(R.styleable.GreenView_label));
-
-        float size = ta.getDimension(R.styleable.GreenView_android_textSize, textSizeIntToSp(defaultTextSize));
-        setTextSizeSp(size);
-        initialTextSizeSp = size;
-
-        defaultPaddingDp = Math.round(defaultPadding * getResources().getDisplayMetrics().density);
-
-        ta.recycle();
+        defaultPaddingDp = Utils.dpToPx(defaultPadding);
 
         // Objects needed to draw on canvas
         backgroundRect = new RectF();
         cornerRadius = Math.round(12f * getResources().getDisplayMetrics().density);
         textBounds = new Rect();
+
+        readAttrs(context, attrs);
+    }
+
+    private void readAttrs(Context context, AttributeSet attrs) {
+        // Init values
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.GreenView);
+        setLabel(ta.getString(R.styleable.GreenView_android_text));
+
+        float size = ta.getDimension(R.styleable.GreenView_android_textSize, Utils.spToPx(defaultTextSize));
+        setTextSizeSpPx(size);
+        initialTextSizeSpPx = size;
+        ta.recycle();
     }
 
     @Override
@@ -103,7 +105,8 @@ public class GreenView extends View{
 
         // Add padding to width
         final int padding = Math.max( (getPaddingStart()+getPaddingEnd()), defaultPaddingDp );
-        final int desiredWdith = Math.round((maxTextWidth + padding));
+        // Minimum width matches height
+        final int desiredWdith = Math.round( Math.max((maxTextWidth + padding), maxTextHeight*2) );
         // Add padding to height
         final int desiredHeight = Math.round(2 * (maxTextHeight + getPaddingTop() + getPaddingBottom()));
 
@@ -161,18 +164,18 @@ public class GreenView extends View{
         invalidate();
     }
 
-    public float getTextSizeSp() {
-        return textSizeSp;
+    public float getTextSizeSpPx() {
+        return textSizeSpPx;
     }
 
-    public void setTextSizeSp(float size) {
-        textSizeSp = size;
+    public void setTextSizeSpPx(float size) {
+        textSizeSpPx = size;
         textPaint.setTextSize(size);
         invalidate();
     }
 
-    private float textSizeIntToSp(float size) {
-        return Math.round(size * getResources().getDisplayMetrics().scaledDensity);
+    public float getTextSizeSp() {
+        return Utils.pxToSp(textSizeSpPx);
     }
 
     @Override
@@ -184,12 +187,13 @@ public class GreenView extends View{
 
                 ObjectAnimator animato = ObjectAnimator.ofFloat(
                         this,
-                        "textSizeSp",
-                        textSizeSp, (textSizeSp * labelScaleValue)
+                        "textSizeSpPx",
+                        textSizeSpPx, (textSizeSpPx * labelScaleValue)
                 );
                 animato.setDuration(100);
                 animato.setInterpolator(new LinearInterpolator());
                 animato.start();
+
                 return true;
 
             case MotionEvent.ACTION_UP:
@@ -198,8 +202,8 @@ public class GreenView extends View{
 
                 ObjectAnimator animata = ObjectAnimator.ofFloat(
                         this,
-                        "textSizeSp",
-                        textSizeSp, initialTextSizeSp
+                        "textSizeSpPx",
+                        textSizeSpPx, initialTextSizeSpPx
                 );
                 animata.setDuration(100);
                 animata.setInterpolator(new AccelerateInterpolator());
@@ -215,4 +219,5 @@ public class GreenView extends View{
     public boolean performClick() {
         return super.performClick();
     }
+
 }
