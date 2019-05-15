@@ -2,7 +2,7 @@
 
 <objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
     android:propertyName="fillAlpha"
-    android:duration="600"
+    android:duration="@integer/single_digit_animation_ms"
     android:valueFrom="0"
     android:valueTo="1"
     android:valueType="floatType"

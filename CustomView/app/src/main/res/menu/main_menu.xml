@@ -33,8 +33,12 @@
                 android:title="@string/avd2"
                 app:showAsAction="never" />
             <item
-                android:id="@+id/menuScrollCounter"
-                android:title="@string/scrolling_counter"
+                android:id="@+id/menuDigitIncrement"
+                android:title="@string/digit_incrementer"
+                app:showAsAction="never" />
+            <item
+                android:id="@+id/menuDigitScroll"
+                android:title="@string/digit_scroller"
                 app:showAsAction="never" />
         </menu>
 

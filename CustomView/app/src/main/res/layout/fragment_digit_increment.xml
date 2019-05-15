@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".fragments.DigitIncrementFragment">
+
+    <com.example.rek.customview.custom_views.DigitIncrementCounter
+        android:id="@+id/digitScroller"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:startingDigit="8" />
+
+    <Button
+        android:id="@+id/btnDigitIncrement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="increment"
+        tools:ignore="ButtonStyle" />
+
+    <EditText
+        android:id="@+id/edtDigitIncrement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Set Digit"
+        android:inputType="number"
+        android:maxLength="1" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_linear_scale" />
+
+    <com.example.rek.customview.custom_views.MultiDigitIncrementCounter
+        android:id="@+id/counter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+
+    <Button
+        android:id="@+id/btnIncrementMultiDigitIncrement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="increment" />
+
+    <EditText
+        android:id="@+id/edtMultiDigitIncrement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Set count"
+        android:inputType="number"
+        android:maxLength="4" />
+
+
+</LinearLayout>
+

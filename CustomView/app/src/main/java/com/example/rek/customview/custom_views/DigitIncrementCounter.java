@@ -1,7 +1,6 @@
 package com.example.rek.customview.custom_views;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
@@ -13,7 +12,7 @@ import com.example.rek.customview.R;
 import com.example.rek.customview.Utils;
 
 
-public class DigitScroller extends android.support.v7.widget.AppCompatImageView {
+public class DigitIncrementCounter extends android.support.v7.widget.AppCompatImageView {
 
     private static final int MAX_DIGIT = 9;
     private static final int MIN_DIGIT = 0;
@@ -24,12 +23,12 @@ public class DigitScroller extends android.support.v7.widget.AppCompatImageView 
 
     private boolean animationRunning = false;
 
-    public DigitScroller(Context context) {
+    public DigitIncrementCounter(Context context) {
         super(context);
         init(context, null);
     }
 
-    public DigitScroller(Context context, @Nullable AttributeSet attrs) {
+    public DigitIncrementCounter(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
@@ -52,8 +51,8 @@ public class DigitScroller extends android.support.v7.widget.AppCompatImageView 
 
     private void readAttrs(Context context, AttributeSet attrs) {
         if (attrs != null) {
-            TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.DigitScroller);
-            currentCount = attributes.getInt(R.styleable.DigitScroller_startingDigit, MIN_DIGIT);
+            TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.DigitIncrementCounter);
+            currentCount = attributes.getInt(R.styleable.DigitIncrementCounter_startingDigit, MIN_DIGIT);
 
             attributes.recycle();
         }
@@ -92,19 +91,23 @@ public class DigitScroller extends android.support.v7.widget.AppCompatImageView 
     }
 
     public void setDigitAnim(int digit) {
-        int newDigit = Utils.constrainNumber(digit, MIN_DIGIT, MAX_DIGIT);
+        if (!animationRunning) {
+            int newDigit = Utils.constrainNumber(digit, MIN_DIGIT, MAX_DIGIT);
 
-        if ( (newDigit-currentCount == 1 || newDigit-currentCount == -9) ) {
-            increment();
-        } else {
-            currentCount = newDigit;
-            setDrawableFromCount();
+            if ((newDigit - currentCount == 1 || newDigit - currentCount == -9)) {
+                increment();
+            } else {
+                currentCount = newDigit;
+                setDrawableFromCount();
+            }
         }
     }
 
     public void setDigit(int newDigit) {
-        currentCount = newDigit;
-        setDrawableFromCount();
+        if (!animationRunning) {
+            currentCount = newDigit;
+            setDrawableFromCount();
+        }
     }
 
 }

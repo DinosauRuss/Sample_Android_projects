@@ -15,20 +15,20 @@ import android.widget.EditText;
 
 import com.example.rek.customview.R;
 import com.example.rek.customview.Utils;
-import com.example.rek.customview.custom_views.DigitScroller;
-import com.example.rek.customview.custom_views.ScrollCounter;
+import com.example.rek.customview.custom_views.DigitIncrementCounter;
+import com.example.rek.customview.custom_views.MultiDigitIncrementCounter;
 
 
-public class ScrollCounterFragment extends Fragment
+public class DigitIncrementFragment extends Fragment
         implements EditText.OnKeyListener, View.OnClickListener{
 
-    DigitScroller singleScroller;
+    DigitIncrementCounter singleScroller;
     EditText edtSingleScroller;
 
-    ScrollCounter counter;
+    MultiDigitIncrementCounter counter;
     EditText edtCounter;
 
-    public ScrollCounterFragment() {
+    public DigitIncrementFragment() {
         // Required empty public constructor
     }
 
@@ -36,23 +36,23 @@ public class ScrollCounterFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_scroll_counter, container, false);
+        View v = inflater.inflate(R.layout.fragment_digit_increment, container, false);
 
         singleScroller = v.findViewById(R.id.digitScroller);
 
-        final Button btnIncrement = v.findViewById(R.id.btnIncrement);
+        final Button btnIncrement = v.findViewById(R.id.btnDigitIncrement);
         btnIncrement.setOnClickListener(this);
 
-        edtSingleScroller = v.findViewById(R.id.edtDigit);
+        edtSingleScroller = v.findViewById(R.id.edtDigitIncrement);
         edtSingleScroller.setOnKeyListener(this);
 
         counter = v.findViewById(R.id.counter);
         counter.setCount(1988);
 
-        final Button btnIncrementScrollCounter = v.findViewById(R.id.btnIncrementScrollCounter);
+        final Button btnIncrementScrollCounter = v.findViewById(R.id.btnIncrementMultiDigitIncrement);
         btnIncrementScrollCounter.setOnClickListener(this);
 
-        edtCounter = v.findViewById(R.id.edtCounter);
+        edtCounter = v.findViewById(R.id.edtMultiDigitIncrement);
         edtCounter.setOnKeyListener(this);
 
         return v;
@@ -69,10 +69,10 @@ public class ScrollCounterFragment extends Fragment
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnIncrement:
+            case R.id.btnDigitIncrement:
                 singleScroller.increment();
                 break;
-            case R.id.btnIncrementScrollCounter:
+            case R.id.btnIncrementMultiDigitIncrement:
                 counter.increment();
                 break;
         }
@@ -84,10 +84,10 @@ public class ScrollCounterFragment extends Fragment
                 (keyCode == KeyEvent.KEYCODE_ENTER) ) {
 
             switch (v.getId()){
-                case R.id.edtDigit:
+                case R.id.edtDigitIncrement:
                     setSingleScrollerDigit(v);
                     return true;
-                case R.id.edtCounter:
+                case R.id.edtMultiDigitIncrement:
                     setCounterNumber(v);
                     return true;
             }
